@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TemplatesRoutingModule } from './templates-routing.module';
-
+import { BasicFormsComponent } from './components/basic-forms/basic-forms.component';
+import { DynamicFormsComponent } from './components/dynamic-forms/dynamic-forms.component';
+import { SwitchFormsComponent } from './components/switch-forms/switch-forms.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    TemplatesRoutingModule
-  ]
+  declarations: [
+    BasicFormsComponent,
+    DynamicFormsComponent,
+    SwitchFormsComponent,
+  ],
+  imports: [CommonModule, TemplatesRoutingModule],
 })
-export class TemplatesModule { }
+export class TemplatesModule {}
