@@ -3,9 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'templates',
+    path: 'template-forms',
     loadChildren: () =>
       import('./templates/templates.module').then((m) => m.TemplatesModule),
+  },
+  {
+    path: 'reactive-forms',
+    loadChildren: () =>
+      import('./reactives/reactives.module').then((m) => m.ReactivesModule),
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'template-forms',
   },
 ];
 
