@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BasicFormsComponent } from './components/basic-forms/basic-forms.component';
 import { DynamicFormsComponent } from './components/dynamic-forms/dynamic-forms.component';
+import { SwitchFormsComponent } from './components/switch-forms/switch-forms.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
       {
         path: 'dynamic-forms',
         component: DynamicFormsComponent,
+      },
+      {
+        path: 'switch-forms',
+        component: SwitchFormsComponent,
       },
       {
         path: '**',
