@@ -29,5 +29,7 @@ export class BasicFormsComponent implements OnInit {
     );
   }
 
-  saveProduct(): void {}
+  saveProduct(): void {
+    this.form.resetForm();
+  }
 }
