@@ -1,1 +1,56 @@
-<p>basic-forms works!</p>
+<h3>
+  Template Forms:
+  <small>Basic forms</small>
+</h3>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form #addProductForm="ngForm" (submit)="saveProduct()" autocomplete="off">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Product</label>
+        <div class="col-sm-9">
+          <input ngModel type="text" name="product" class="form-control" minlength="3" placeholder="Product name" required />
+          <span *ngIf="checkProductName()" class="form-text text-danger">Must have a minimum length of 3 characters</span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Price</label>
+        <div class="col-sm-9">
+          <input ngModel type="number" name="price" class="form-control" min="0" placeholder="Product price" required />
+          <span *ngIf="checkProductPrice()" class="form-text text-danger">Must be greater or equal to 0</span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input ngModel type="number" name="stock" class="form-control" placeholder="Product stock" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Add product</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ addProductForm.valid }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ addProductForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ addProductForm.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ addProductForm.value | json }}</pre>
+  </div>
+</div>

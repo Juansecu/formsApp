@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { TemplatesRoutingModule } from './templates-routing.module';
+
 import { BasicFormsComponent } from './components/basic-forms/basic-forms.component';
 import { DynamicFormsComponent } from './components/dynamic-forms/dynamic-forms.component';
 import { SwitchFormsComponent } from './components/switch-forms/switch-forms.component';
@@ -12,6 +14,6 @@ import { SwitchFormsComponent } from './components/switch-forms/switch-forms.com
     DynamicFormsComponent,
     SwitchFormsComponent,
   ],
-  imports: [CommonModule, TemplatesRoutingModule],
+  imports: [CommonModule, FormsModule, TemplatesRoutingModule],
 })
 export class TemplatesModule {}
