@@ -18,7 +18,16 @@
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Price</label>
         <div class="col-sm-9">
-          <input ngModel type="number" name="price" class="form-control" min="0" placeholder="Product price" required />
+          <input
+            ngModel
+            type="number"
+            minimum [minimum]="0"
+            name="price"
+            class="form-control"
+            min="0"
+            placeholder="Product price"
+            required
+          />
           <span *ngIf="checkProductPrice()" class="form-text text-danger">Must be greater or equal to 0</span>
         </div>
       </div>
@@ -32,7 +41,7 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">Add product</button>
+          <button type="submit" [disabled]="addProductForm.invalid" class="btn btn-primary float-end">Add product</button>
         </div>
       </div>
     </form>
@@ -52,5 +61,8 @@
 
     <span>Value</span>
     <pre>{{ addProductForm.value | json }}</pre>
+
+    <span>MinimumDirective</span>
+    <pre>{{ addProductForm.controls.price?.errors | json }}</pre>
   </div>
 </div>
