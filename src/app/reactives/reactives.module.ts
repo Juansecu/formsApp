@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ReactivesRoutingModule } from './reactives-routing.module';
 
@@ -8,7 +9,11 @@ import { DynamicFormsComponent } from './components/dynamic-forms/dynamic-forms.
 import { SwitchFormsComponent } from './components/switch-forms/switch-forms.component';
 
 @NgModule({
-  declarations: [BasicFormsComponent, DynamicFormsComponent, SwitchFormsComponent],
-  imports: [CommonModule, ReactivesRoutingModule],
+  declarations: [
+    BasicFormsComponent,
+    DynamicFormsComponent,
+    SwitchFormsComponent,
+  ],
+  imports: [CommonModule, ReactiveFormsModule, ReactivesRoutingModule],
 })
 export class ReactivesModule {}
