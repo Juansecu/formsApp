@@ -25,19 +25,19 @@
     <label class="col-sm-3 col-form-label">Favorite games</label>
     <div class="col-sm-9">
       <div class="input-group">
-        <input type="text" (keyup.enter)="1==1" class="form-control" placeholder="Add favorite game" />
-        <button type="button" (click)="1==1" class="btn btn-outline-primary">Add</button>
+        <input type="text" (keyup.enter)="addFavoriteGame()" [formControl]="newFavoriteGame" class="form-control" placeholder="Add favorite game" />
+        <button type="button" (click)="addFavoriteGame()" class="btn btn-outline-primary">Add</button>
       </div>
     </div>
   </div>
 
   <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">My Favorite games</label>
-    <div class="col-sm-9">
-      <!-- <div *ngFor="let game of person.favoriteGames; let i = index" class="input-group mb-1">
-        <input type="text" class="form-control" />
-        <button type="button" (click)="1==1" class="btn btn-outline-danger">Remove</button>
-      </div> -->
+    <label class="col-sm-3 col-form-label">My favorite games</label>
+    <div formArrayName="favoriteGames" class="col-sm-9">
+      <div *ngFor="let game of favoriteGames.controls; let i = index" class="input-group mb-1">
+        <input [formControlName]="i" type="text" class="form-control" />
+        <button type="button" (click)="removeFavoriteGame(i)" class="btn btn-outline-danger">Remove</button>
+      </div>
     </div>
   </div>
 
@@ -48,5 +48,15 @@
   </div>
 </form>
 
-<h4>Person</h4>
-<!-- <pre>{{ person | json }}</pre> -->
+<h4>Valid</h4>
+<pre>{{ form.valid }}</pre>
+
+<br />
+
+<h4>Value</h4>
+<pre>{{ form.value | json }}</pre>
+
+<br />
+
+<h4>New Favorite Game</h4>
+<pre>{{ newFavoriteGame.valid }}</pre>
