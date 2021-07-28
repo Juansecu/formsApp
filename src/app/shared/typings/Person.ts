@@ -1,10 +1,10 @@
 export interface Person {
   firstName: string;
   lastName: string;
-  favoriteGames: FavoriteGames[];
+  favoriteGames: FavoriteGame[];
 }
 
-export interface FavoriteGames {
+export interface FavoriteGame {
   id: number;
   name: string;
 }
