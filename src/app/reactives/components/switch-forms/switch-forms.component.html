@@ -1,1 +1,67 @@
-<p>switch-forms works!</p>
+<h3>
+  Reactive Forms:
+  <small>Switch Forms</small>
+</h3>
+<hr />
+
+<form (ngSubmit)="saveSettings()" [formGroup]="form">
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gender</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input formControlName="gender" type="radio" id="maleRadio" class="form-check-input" value="Male" />
+        <label for="maleRadio" class="form-check-label">Male</label>
+      </div>
+
+      <div class="form-check">
+        <input formControlName="gender" type="radio" id="femaleRadio" class="form-check-input" value="Female" />
+        <label for="femaleRadio" class="form-check-label">Female</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input formControlName="notifications" type="checkbox" id="notifications" class="form-check-input" />
+        <label for="notifications" class="form-check-label">I want to receive notifications in the future</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Terms and Conditions</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input formControlName="tacs" type="checkbox" id="tacs" class="form-check-input" />
+        <label for="tacs" class="form-check-label">
+          I agree with the
+          <a href="#">Terms and Conditions of Service</a>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary float-end">Save</button>
+    </div>
+  </div>
+</form>
+
+<h4>registerForm</h4>
+<pre>{{ form.value | json }}</pre>
+
+<br />
+
+<h5>Valid</h5>
+<pre>{{ form.valid }}</pre>
+
+<br>
+
+<h5>Terms & Conditions</h5>
+<pre>{{ form.controls.tacs.errors | json }}</pre>
+
+<h5>Settings</h5>
+<pre>{{ settings | json }}</pre>
