@@ -1,1 +1,55 @@
-<p>basic-forms works!</p>
+<h3>
+  Reactive Forms:
+  <small>Basic forms</small>
+</h3>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form (ngSubmit)="addProduct()" [formGroup]="form" autocomplete="off">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Product</label>
+        <div class="col-sm-9">
+          <input formControlName="product" type="text" class="form-control" placeholder="Product name" />
+          <span *ngIf="checkControl('product')" class="form-text text-danger">Must have a minimum length of 3 characters</span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Price</label>
+        <div class="col-sm-9">
+          <input formControlName="price" type="number" class="form-control" placeholder="Product price" />
+          <span *ngIf="checkControl('price')" class="form-text text-danger">Must be greater or equal to 0</span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input formControlName="stock" type="number" class="form-control" placeholder="Product stock" />
+          <span *ngIf="checkControl('stock')" class="form-text text-danger">Must be greater or equal to 0</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" [disabled]="form.invalid" class="btn btn-primary float-end">Add product</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col">
+  <span>Valid</span>
+  <pre>{{ form.valid }}</pre>
+
+  <span>Pristine</span>
+  <pre>{{ form.pristine }}</pre>
+
+  <span>Touched</span>
+  <pre>{{ form.touched }}</pre>
+
+  <span>Value</span>
+  <pre>{{ form.value | json }}</pre>
+</div>

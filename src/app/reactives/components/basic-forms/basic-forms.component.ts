@@ -1,16 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-basic-forms',
   templateUrl: './basic-forms.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class BasicFormsComponent implements OnInit {
+export class BasicFormsComponent {
+  /*form = new FormGroup({
+    product: new FormControl(''),
+    price: new FormControl(),
+    stock: new FormControl(),
+  });*/
 
-  constructor() { }
+  form = this.formBuilder.group({
+    product: ['', [Validators.required, Validators.minLength(3)]],
+    price: [, [Validators.required, Validators.min(0)]],
+    stock: [, [Validators.required, Validators.min(0)]],
+  });
 
-  ngOnInit(): void {
+  constructor(private readonly formBuilder: FormBuilder) {}
+
+  addProduct(): void {
+    console.log(this.form.value);
+    this.form.reset();
   }
 
+  checkControl(field: string): boolean | null {
+    return (
+      this.form.controls[field].errors && this.form.controls[field].touched
+    );
+  }
 }
