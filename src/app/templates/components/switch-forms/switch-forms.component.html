@@ -1,1 +1,51 @@
-<p>switch-forms works!</p>
+<h3>
+  Template Forms:
+  <small>Switch Forms</small>
+</h3>
+<hr />
+
+<form #registerForm="ngForm">
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gender</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input type="radio" id="maleRadio" name="flexRadioDefault" class="form-check-input" />
+        <label for="maleRadio" class="form-check-label">Male</label>
+      </div>
+
+      <div class="form-check">
+        <input type="radio" id="femaleRadio" name="flexRadioDefault" class="form-check-input" checked />
+        <label for="femaleRadio" class="form-check-label">Female</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch">
+        <input type="checkbox" id="switch" class="form-check-input" />
+        <label for="switch" class="form-check-label"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Terms and Conditions</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input type="checkbox" id="tacs" class="form-check-input" />
+        <label for="tacs" class="form-check-label">
+          I agree with the
+          <a href="#">Terms and Conditions of Service</a>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button type="submit" class="btn btn-primary float-end">Save</button>
+    </div>
+  </div>
+</form>
