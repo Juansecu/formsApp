@@ -9,12 +9,28 @@
     <label class="col-sm-3 col-form-label">Gender</label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input type="radio" id="maleRadio" name="flexRadioDefault" class="form-check-input" />
+        <input
+          type="radio"
+          [(ngModel)]="person.gender"
+          id="maleRadio"
+          name="flexRadioDefault"
+          class="form-check-input"
+          value="Male"
+          required
+        />
         <label for="maleRadio" class="form-check-label">Male</label>
       </div>
 
       <div class="form-check">
-        <input type="radio" id="femaleRadio" name="flexRadioDefault" class="form-check-input" checked />
+        <input
+          type="radio"
+          [(ngModel)]="person.gender"
+          id="femaleRadio"
+          name="flexRadioDefault"
+          class="form-check-input"
+          value="Female"
+          required
+        />
         <label for="femaleRadio" class="form-check-label">Female</label>
       </div>
     </div>
@@ -23,9 +39,9 @@
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Notifications</label>
     <div class="col-sm-9">
-      <div class="form-check form-switch">
-        <input type="checkbox" id="switch" class="form-check-input" />
-        <label for="switch" class="form-check-label"></label>
+      <div class="form-check form-switch mt-2">
+        <input type="checkbox" [(ngModel)]="person.notifications" id="notifications" name="notifications" class="form-check-input" />
+        <label for="notifications" class="form-check-label">I want to receive notifications in the future</label>
       </div>
     </div>
   </div>
@@ -34,7 +50,7 @@
     <label class="col-sm-3 col-form-label">Terms and Conditions</label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input type="checkbox" id="tacs" class="form-check-input" />
+        <input type="checkbox" [ngModel]="termsAndConditions" id="tacs" name="tacs" class="form-check-input" required />
         <label for="tacs" class="form-check-label">
           I agree with the
           <a href="#">Terms and Conditions of Service</a>
@@ -45,7 +61,20 @@
 
   <div class="row">
     <div class="col">
-      <button type="submit" class="btn btn-primary float-end">Save</button>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary float-end">Save</button>
     </div>
   </div>
 </form>
+
+<h4>registerForm</h4>
+<pre>{{ registerForm.value | json }}</pre>
+
+<br />
+
+<h5>Valid</h5>
+<pre>{{ registerForm.valid }}</pre>
+
+<br>
+
+<h5>Terms & Conditions</h5>
+<pre>{{ registerForm.controls.tacs?.errors | json }}</pre>
