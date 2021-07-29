@@ -13,6 +13,10 @@ const routes: Routes = [
       import('./reactives/reactives.module').then((m) => m.ReactivesModule),
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: 'template-forms',
