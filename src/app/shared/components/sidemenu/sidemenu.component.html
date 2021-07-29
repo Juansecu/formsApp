@@ -15,3 +15,13 @@
     {{ route.text }}
   </a>
 </nav>
+
+<br />
+
+<h2>Validations</h2>
+<hr />
+<nav class="list-group">
+  <a *ngFor="let route of authRoutes" [routerLink]="[route.route]" routerLinkActive="active" class="list-group-item">
+    {{ route.text }}
+  </a>
+</nav>

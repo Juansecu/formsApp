@@ -8,6 +8,16 @@ import { Route } from '../../typings/Route';
   styles: [],
 })
 export class SidemenuComponent {
+  authRoutes: Route[] = [
+    {
+      text: 'Login',
+      route: 'auth/login',
+    },
+    {
+      text: 'Register',
+      route: 'auth/register',
+    },
+  ];
   reactiveRoutes: Route[] = [
     {
       text: 'Basic Forms',
