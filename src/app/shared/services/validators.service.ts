@@ -5,6 +5,8 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
   providedIn: 'root',
 })
 export class ValidatorsService {
+  emailPattern = /[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/;
+
   checkSameControlValues(
     controlName1: string,
     controlName2: string
