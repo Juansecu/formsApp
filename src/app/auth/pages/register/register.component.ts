@@ -19,10 +19,17 @@ export class RegisterComponent implements OnInit {
       '',
       [Validators.required, Validators.minLength(8), Validators.maxLength(20)],
     ],
-    verifyPassword: [''],
+    verifyPassword: ['', [Validators.required]],
   });
 
   constructor(private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {}
+
+  checkControl(control: string): boolean {
+    return (
+      this.form.controls[control]?.invalid &&
+      this.form.controls[control]?.touched
+    );
+  }
 }
