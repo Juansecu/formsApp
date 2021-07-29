@@ -10,7 +10,10 @@ export class RegisterComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({
     email: [
       '',
-      [Validators.required, Validators.pattern(/[a-z]+@[a-z]+.[a-z]{2,4}/)],
+      [
+        Validators.required,
+        Validators.pattern(/[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/),
+      ],
     ],
     username: ['', [Validators.required, Validators.minLength(5)]],
     firstName: ['', [Validators.required, Validators.minLength(3)]],
