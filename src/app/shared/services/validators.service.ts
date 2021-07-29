@@ -13,9 +13,12 @@ export class ValidatorsService {
       const control1Value = formGroup.get(controlName1)?.value;
       const control2Value = formGroup.get(controlName2)?.value;
 
-      console.log(control1Value, control2Value);
+      if (control1Value !== control2Value) {
+        formGroup.get(controlName2)?.setErrors({ sameControlValues: false });
+        return { sameControlValues: false };
+      }
 
-      if (control1Value !== control2Value) return { sameControlValues: false };
+      formGroup.get(controlName2)?.setErrors(null);
 
       return null;
     };
