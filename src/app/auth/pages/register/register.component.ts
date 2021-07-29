@@ -1,31 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ValidatorsService } from 'src/app/shared/services/validators.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styles: [],
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup = this.formBuilder.group({
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(/[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/),
+  form: FormGroup = this.formBuilder.group(
+    {
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/[a-z0-9]+@[a-z]+\.[a-z]{2,4}$/),
+        ],
       ],
-    ],
-    username: ['', [Validators.required, Validators.minLength(5)]],
-    firstName: ['', [Validators.required, Validators.minLength(3)]],
-    lastName: ['', [Validators.required, Validators.minLength(3)]],
-    password: [
-      '',
-      [Validators.required, Validators.minLength(8), Validators.maxLength(20)],
-    ],
-    verifyPassword: ['', [Validators.required]],
-  });
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(20),
+        ],
+      ],
+      verifyPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(20),
+        ],
+      ],
+    },
+    {
+      validators: this.validatorsService.checkSameControlValues(
+        'password',
+        'verifyPassword'
+      ),
+    }
+  );
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly validatorsService: ValidatorsService
+  ) {}
 
   ngOnInit(): void {}
 
