@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 
+import { User } from '../typings/User';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,9 +24,13 @@ export class UsersService implements AsyncValidator {
     control: AbstractControl
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.http
-      .get<any[]>(`${this.baseUrl}?q=${control.value}`)
+      .get<User[]>(`${this.baseUrl}?q=${control.value}`)
       .pipe(
-        map((response) => (!response.length ? null : { takenEmail: true }))
+        map((response) =>
+          !response.filter((user) => user.email === control.value).length
+            ? null
+            : { takenEmail: true }
+        )
       );
   }
 }
