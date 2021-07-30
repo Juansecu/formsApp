@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { UsersService } from 'src/app/shared/services/users.service';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.validatorsService.emailPattern),
         ],
+        [this.usersService],
       ],
       username: ['', [Validators.required, Validators.minLength(5)]],
       firstName: ['', [Validators.required, Validators.minLength(3)]],
@@ -48,6 +50,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
+    private readonly usersService: UsersService,
     private readonly validatorsService: ValidatorsService
   ) {}
 
