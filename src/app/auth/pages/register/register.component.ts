@@ -56,10 +56,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  checkControl(control: string): boolean {
+  checkControlValue(controlName: string, errorName: string): boolean {
     return (
-      this.form.controls[control]?.invalid &&
-      this.form.controls[control]?.touched
+      this.form.controls[controlName]?.errors?.[errorName] &&
+      this.form.controls[controlName]?.touched
     );
   }
 }

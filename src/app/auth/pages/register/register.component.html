@@ -11,7 +11,14 @@
         <label class="col-sm-3 col-form-label">Email</label>
         <div class="col-sm-9">
           <input formControlName="email" type="email" class="form-control" placeholder="Email" />
-          <span *ngIf="checkControl('email')" class="form-text text-danger">This field is required</span>
+          <span *ngIf="checkControlValue('email', 'required')" class="form-text text-danger">This field is required</span>
+          <span
+            *ngIf="checkControlValue('email', 'pattern')"
+            class="form-text text-danger"
+          >
+            This field value is not a valid email. Example: example@example.com
+          </span>
+          <span *ngIf="checkControlValue('email', 'takenEmail')" class="form-text text-danger">This email is already taken</span>
         </div>
       </div>
 
@@ -19,7 +26,7 @@
         <label class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
           <input formControlName="username" type="text" class="form-control" placeholder="Username" />
-          <span *ngIf="checkControl('username')" class="form-text text-danger">This field is required</span>
+          <span *ngIf="checkControlValue('username', 'required')" class="form-text text-danger">This field is required</span>
         </div>
       </div>
 
@@ -27,7 +34,7 @@
         <label class="col-sm-3 col-form-label">First Name</label>
         <div class="col-sm-9">
           <input formControlName="firstName" type="text" class="form-control" placeholder="First name" />
-          <span *ngIf="checkControl('firstName')" class="form-text text-danger">This field is required</span>
+          <span *ngIf="checkControlValue('firstName', 'required')" class="form-text text-danger">This field is required</span>
         </div>
       </div>
 
@@ -35,7 +42,7 @@
         <label class="col-sm-3 col-form-label">Last Name</label>
         <div class="col-sm-9">
           <input formControlName="lastName" type="text" class="form-control" placeholder="Last name" />
-          <span *ngIf="checkControl('lastName')" class="form-text text-danger">This field is required</span>
+          <span *ngIf="checkControlValue('lastName', 'required')" class="form-text text-danger">This field is required</span>
         </div>
       </div>
 
@@ -43,7 +50,7 @@
         <label class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
           <input formControlName="password" type="password" class="form-control" placeholder="Password" />
-          <span *ngIf="checkControl('password')" class="form-text text-danger">This field is required</span>
+          <span *ngIf="checkControlValue('password', 'required')" class="form-text text-danger">This field is required</span>
         </div>
       </div>
 
@@ -51,7 +58,7 @@
         <label class="col-sm-3 col-form-label">Confirm Password</label>
         <div class="col-sm-9">
           <input formControlName="verifyPassword" type="password" class="form-control" placeholder="Confirm Password" />
-          <span *ngIf="checkControl('verifyPassword')" class="form-text text-danger">Passwords must match</span>
+          <span *ngIf="checkControlValue('verifyPassword', 'required')" class="form-text text-danger">Passwords must match</span>
         </div>
       </div>
 
